@@ -1,0 +1,44 @@
+$darkcolor: #111111;
+$lightcolor: #FFFFFF;
+
+*
+{
+	margin: 0;
+	padding: 0;
+}
+
+html, body
+{
+	height: 100%;
+}
+
+body
+{
+	background-color: $darkcolor;
+	color: $lightcolor;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+h1
+{
+	text-transform: uppercase;
+	white-space: pre;
+
+	&:last-of-type
+	{
+		margin-bottom: 5rem;
+	}
+}
+
+#container
+{
+	overflow: hidden;
+}
+
+.input-container
+{
+	display: flex;
+	justify-content: space-between;
+}
