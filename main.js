@@ -1,13 +1,3 @@
-let mouseTimeoutId;
-
-async function mouseStep(h1)
-{
-	mouseTimeoutId = setTimeout(() =>
-	{
-
-	}, 500);
-}
-
 function deselectAll()
 {
 	const t = $('h1');
@@ -15,38 +5,82 @@ function deselectAll()
 	t.unbind('mousemove');
 }
 
-$('h1').click(function()
+
+
+
+
+
+$('#container').click(function(e)
 {
-	const t = $(this);
+	if (e.target.id !== 'container') return;
 
-	if (t.hasClass('selected'))
+	deselectAll();
+});
+
+
+
+
+
+
+
+$('#newlinebutton').click(() =>
+{
+	const h1 = $('<h1>Lorem Ipsum</h1>');
+	$('#container').append(h1);
+
+
+
+
+
+	h1.on('mousedown', function(e)
 	{
-		t.removeClass('selected');
-		deselectAll();
-		return;
-	}
+		if (e.target.tagName !== 'H1') return;
 
-	t.addClass('selected');
-	t.css({'position': 'absolute'});
+		h1.css({'position': 'absolute'});
+		h1.on('mousemove', (e) =>
+		{
+			const cursorX = e.clientX;
+			const cursorY = e.clientY;
+			h1.css({'left': cursorX - (h1.width() / 2)});
+			h1.css({'top': cursorY - (h1.height() / 2)});
+		});
+	});
 
-	const squares = $(`
-		<div id='square1' class='selectedsquare'></div>
-		<div id='square2' class='selectedsquare'></div>
-		<div id='square3' class='selectedsquare'></div>
-		<div id='square4' class='selectedsquare'></div>
-	`);
-	t.append(squares);
 
-	t.on('mousemove', (e) =>
+
+
+
+	h1.on('mouseup', () =>
 	{
-		const cursorX = e.clientX;
-		const cursorY = e.clientY;
-		t.css({'left': cursorX - (t.width() / 2)});
-		t.css({'top': cursorY - (t.height() / 2)});
+		h1.addClass('selected');
+		const squares = $(`
+			<div id='square4' class='selectedsquare'></div>
+		`);
+		h1.append(squares);
+
+		squares.on('mousedown', () =>
+		{
+			const originalWidth = h1.width();
+			const originalHeight = h1.height();
+			squares.on('mousemove', (e) =>
+			{
+				const cursorX = e.clientX;
+				const cursorY = e.clientY;
+				const lineLength = h1.text().trim().length;
+				const distanceX = cursorX - h1.offset().left;
+				const distanceY = cursorY - h1.offset().top;
+
+				h1.css({'transform': `scaleX(${distanceX / originalWidth}) scaleY(${distanceY / originalHeight})`});
+			});
+		});
+
+		squares.on('mouseup', () =>
+		{
+			squares.unbind('mousemove');
+		});
+
+		h1.unbind('mousemove');
 	});
 });
 
-$('#container').children().not('h1').click(function()
-{
-	deselectAll();
-});
+$('#newlinebutton').click();
