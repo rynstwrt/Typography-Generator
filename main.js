@@ -6,12 +6,9 @@ function deselectAll()
 	$(document).unbind('keydown');
 }
 
-
-
 $('#fontselect').on('input', function()
 {
 	let font;
-
 	switch ($(this).val())
 	{
 		case 'Anton':
@@ -33,10 +30,8 @@ $('#fontselect').on('input', function()
 			font = "'Roboto Condensed', sans-serif";
 			break;
 	}
-
 	$('h1').css({'font-family': font});
 });
-
 
 $('#themeselect').on('input', function()
 {
@@ -50,30 +45,18 @@ $('#themeselect').on('input', function()
 	}
 });
 
-
-
-
 $('#container').click(function(e)
 {
 	if (e.target.id !== 'container') return;
-
 	deselectAll();
 });
 
-
-
 $('#resetbutton').click(() => $('h1').remove());
-
-
 
 $('#newlinebutton').click(() =>
 {
 	const h1 = $('<h1>Lorem Ipsum</h1>');
 	$('#container').append(h1);
-
-
-
-
 
 	h1.on('mousedown', function(e)
 	{
@@ -96,7 +79,6 @@ $('#newlinebutton').click(() =>
 			h1.css({'top': cursorY - (h1.height() / 2)});
 		});
 	});
-
 
 	h1.dblclick(function()
 	{
@@ -123,9 +105,6 @@ $('#newlinebutton').click(() =>
 			}
 		});
 	});
-
-
-
 
 	h1.on('mouseup', () =>
 	{
@@ -156,10 +135,6 @@ $('#newlinebutton').click(() =>
 		{
 			squares.unbind('mousemove');
 		});
-
-
-
-
 
 		h1.unbind('mousemove');
 	});
