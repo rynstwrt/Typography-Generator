@@ -1,5 +1,6 @@
 $darkcolor: #111111;
 $lightcolor: #FFFFFF;
+$selectColor: rgb(153, 251, 148);
 
 *
 {
@@ -16,6 +17,7 @@ body
 {
 	background-color: $darkcolor;
 	color: $lightcolor;
+	font-family: 'Roboto', sans-serif;
 	-webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
 	-khtml-user-select: none; /* Konqueror HTML */
@@ -32,37 +34,53 @@ h1
 	text-align: center;
 	white-space: pre;
 	cursor: pointer;
-
-	&:last-of-type
-	{
-		margin-bottom: 5rem;
-	}
 }
 
-#newlinebutton
+.light
 {
 	background-color: $lightcolor;
 	color: $darkcolor;
+}
+
+#controls
+{
 	position: absolute;
 	top: 0;
 	left: 0;
 	margin: 2rem;
-	padding: .1rem 1rem;
-	text-transform: uppercase;
-	cursor: pointer;
-	border-radius: 10px;
+
+	.control-row
+	{
+		display: flex;
+		margin-bottom: 1rem;
+
+		select
+		{
+			margin-left: 1rem;
+		}
+
+		.button
+		{
+			background-color: $lightcolor;
+			color: $darkcolor;
+			padding: .1rem 1rem;
+			text-transform: uppercase;
+			cursor: pointer;
+			border-radius: 10px;
+		}
+	}
 }
 
 .selected
 {
-	border: 1px solid blue;
+	border: 1px solid $selectColor;
 
 	.selectedsquare
 	{
 		width: 20px;
 		height: 20px;
 		position: absolute;
-		background-color: blue;
+		background-color: $selectColor;
 		border-radius: 50%;
 	}
 }

@@ -3,6 +3,7 @@
 <head>
 	<meta charset='utf-8' />
 	<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+	<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed&family=Lato&family=Open+Sans&family=Roboto&family=Roboto+Condensed&display=swap" rel="stylesheet">
 	<link rel='stylesheet' type='text/css' href='main.min.css' />
 	<script src='jquery-3.5.1.slim.min.js'></script>
 	<title>Typography Generator</title>
@@ -10,9 +11,40 @@
 <body>
 <div id='container'>
 
-	<div id='newlinebutton'>
-		<p>New Line</p>
+	<div id='controls'>
+		<div class='control-row'>
+			<div id='newlinebutton' class='button'>
+				<p>New Line</p>
+			</div>
+		</div>
+
+		<div class='control-row'>
+			<div id='resetbutton' class='button'>
+				<p>Reset</p>
+			</div>
+		</div>
+
+		<div class='control-row'>
+			<p>Font:</p>
+			<select id='fontselect'>
+				<option>Anton</option>
+				<option>Barlow Condensed</option>
+				<option>Lato</option>
+				<option>Open Sans</option>
+				<option selected>Roboto</option>
+				<option>Roboto Condensed</option>
+			</select>
+		</div>
+
+		<div class='control-row'>
+			<p>Theme:</p>
+			<select id='themeselect'>
+				<option>Light</option>
+				<option selected>Dark</option>
+			</select>
+		</div>
 	</div>
+
 
 	<script src='main.js'></script>
 </div>
