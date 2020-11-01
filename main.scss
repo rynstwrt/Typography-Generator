@@ -83,11 +83,18 @@ h1
 		background-color: $selectColor;
 		border-radius: 50%;
 	}
+
+	#selectedrectangle
+	{
+		width: 30px;
+		height: 10px;
+		position: absolute;
+		background-color: $selectColor;
+		right: -15px;
+		top: calc(50% - 5px);
+	}
 }
 
-#square1 { top: -10px; left: -10px; }
-#square2 { top: -10px; right: -10px; }
-#square3 { bottom: -10px; left: -10px; }
 #square4 { bottom: -10px; right: -10px; }
 
 .input-container

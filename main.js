@@ -131,9 +131,32 @@ $('#newlinebutton').click(() =>
 			});
 		});
 
+		const rectangle = $(`<div id='selectedrectangle'></div>`);
+		h1.append(rectangle);
+
+		rectangle.on('mousedown', () =>
+		{
+			const originalWidth = h1.width();
+			const originalHeight = h1.height();
+			rectangle.on('mousemove', (e) =>
+			{
+				const cursorX = e.clientX;
+				const lineLength = h1.text().trim().length;
+				const distanceX = cursorX - h1.offset().left;
+
+				console.log(`${distanceX / lineLength}px`);
+				h1.css({'letter-spacing': `${distanceX / lineLength}px`});
+			});
+		});
+
 		squares.on('mouseup', () =>
 		{
 			squares.unbind('mousemove');
+		});
+
+		rectangle.on('mouseup', () =>
+		{
+			rectangle.unbind('mousemove');
 		});
 
 		h1.unbind('mousemove');
