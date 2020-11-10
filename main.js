@@ -144,8 +144,9 @@ $('#newlinebutton').click(() =>
 				const lineLength = h1.text().trim().length;
 				const characterWidth = h1.get(0).offsetWidth;
 				const distanceX = cursorX - h1.offset().left;
-				const letterSpacing = distanceX / lineLength;
-				h1.css({'letter-spacing': `${letterSpacing}px`});
+				const letterSpacing = distanceX / (lineLength);
+				h1.css({'letter-spacing': `${letterSpacing}`});
+				h1.css({'width': `${distanceX}`})
 			});
 		});
 
